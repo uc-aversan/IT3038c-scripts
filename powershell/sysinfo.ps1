@@ -4,9 +4,19 @@
 
 write-host(getIP)
 $IP = getIP
-write-host("This machine's IP is $IP")
+$Date = ""
+$Body = "This machines IP is $IP. User is $env:username. Hostname is $  . Powershell version $Host.Version.major. Today's date is $."
+
+write-host($Body)
 
 
+
+
+
+#Send-MailMessage -To "aversan@mail.uc.edu" -From "aversan@mail.uc.edu" -subject "IT3038c windows sysinfo" -body $Body -SmtpServer smpt.google.com -port 587 -usessl -Credential (Get-Credential)
+
+
+#write-host("This machine's IP is $IP")
 
 #$Hello = "Hello, powershell!"
 #write-Host($Hello)
