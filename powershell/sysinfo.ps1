@@ -2,10 +2,10 @@
     (Get-NetIPAddress).IPv4Address | select-string "192*"
 }
 
-write-host(getIP)
+$H = $Host.Version.Major
 $IP = getIP
-$Date = ""
-$Body = "This machines IP is $IP. User is $env:username. Hostname is $  . Powershell version $Host.Version.major. Today's date is $."
+$Date = get-date -Format "MM/dd/yyy"
+$Body = "This machines IP is $IP. User is $env:username. Hostname is $env:computername. Powershell version $H. Today's date is $Date."
 
 write-host($Body)
 
@@ -15,7 +15,7 @@ write-host($Body)
 
 #Send-MailMessage -To "aversan@mail.uc.edu" -From "aversan@mail.uc.edu" -subject "IT3038c windows sysinfo" -body $Body -SmtpServer smpt.google.com -port 587 -usessl -Credential (Get-Credential)
 
-
+#write-host(getIP)
 #write-host("This machine's IP is $IP")
 
 #$Hello = "Hello, powershell!"
