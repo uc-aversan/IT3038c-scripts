@@ -16,8 +16,8 @@ var server = http.createServer(function(req, res) {
     else if(req.url.match("/sysinfo")) {
         myHostName = os.hostname();
         const cpus = os.cpus().length;
-        freemem = ((os.freemem()) * .001);
-        totalmem = ((os.totalmem()) * .001);
+        freemem = ((os.freemem()) * .000001);
+        totalmem = ((os.totalmem()) * .000001);
         const frame = toTime.fromSeconds(os.uptime());
         html=`
         <!DOCTYPE html>
@@ -28,8 +28,8 @@ var server = http.createServer(function(req, res) {
             <p>Hostname: ${myHostName}</p>
             <p>IP: ${ip.address()}</p>
             <p>Server Uptime: ${frame.humanize()}</p>
-            <p>Total Meemory: ${totalmem} MB</p>
-            <p>Free Memory: ${freemem} MB</p>
+            <p>Total Meemory: ${totalmem.toFixed(3)} MB</p>
+            <p>Free Memory: ${freemem.toFixed(3)} MB</p>
             <p>Number of CPUs: ${cpus}</p>
         </dody>
         </html>
